@@ -383,6 +383,7 @@ type RaxBandwidth struct {
 type VersionedAddress struct {
 	Addr    string `json:"addr"`
 	Version int    `json:"version"`
+	Type    string `json:"OS-EXT-IPS:type"`
 }
 
 // An AddressSet provides a set of public and private IP addresses for a resource.
@@ -390,6 +391,7 @@ type VersionedAddress struct {
 type AddressSet struct {
 	Public  []VersionedAddress `json:"public"`
 	Private []VersionedAddress `json:"private"`
+	Nebula  []VersionedAddress `json:"nebula"`
 }
 
 type NetworkAddress map[string][]VersionedAddress
