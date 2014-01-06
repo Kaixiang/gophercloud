@@ -385,12 +385,9 @@ type VersionedAddress struct {
 	Version int    `json:"version"`
 }
 
-// An AddressSet provides a set of public and private IP addresses for a resource.
-// Each address has a version to identify if IPv4 or IPv6.
-type AddressSet struct {
-	Public  []VersionedAddress `json:"public"`
-	Private []VersionedAddress `json:"private"`
-}
+// An AddressSet provides a set of typed IP addresses (i.e. public/private)
+// for a resource. Each address has a version to identify if IPv4 or IPv6.
+type AddressSet map[string]interface{}
 
 type NetworkAddress map[string][]VersionedAddress
 
@@ -494,6 +491,7 @@ type Server struct {
 	OsExtStsPowerState int               `json:"OS-EXT-STS:power_state"`
 	OsExtStsTaskState  string            `json:"OS-EXT-STS:task_state"`
 	OsExtStsVmState    string            `json:"OS-EXT-STS:vm_state"`
+	OsExtIpsType       string            `json:"OS-EXT-IPS:type"`
 }
 
 // NewServerSettings structures record those fields of the Server structure to change
